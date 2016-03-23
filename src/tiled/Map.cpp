@@ -10,3 +10,13 @@ p_background_color(Color{128, 128, 128, 255})
 {
 
 }
+
+void Map::setVersion(const std::string& version)
+{
+    p_version = version;
+}
+
+const std::string& Map::getVersion() const
+{
+    return p_version;
+}
