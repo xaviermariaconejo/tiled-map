@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
+#include "TerrainCoords.hpp"
 
 namespace tiled
 {
@@ -36,10 +37,10 @@ public:
     std::vector<ObjectLayer*>& getObjectLayers();
     const std::vector<ObjectLayer*>& getObjectLayers() const;
 
-    void setTerrain(std::vector<int>&& Terrain);
-    void setTerrain(const std::vector<int>& Terrain);
-    std::vector<int>& getTerrain();
-    const std::vector<int>& getTerrain() const;
+    void setTerrain(TerrainCoords&& Terrain);
+    void setTerrain(const TerrainCoords& Terrain);
+    TerrainCoords& getTerrain();
+    const TerrainCoords& getTerrain() const;
 
     void setProperties(std::unordered_map<std::string, std::string>&& tileset);
     void setProperties(const std::unordered_map<std::string, std::string>& tileset);
@@ -53,7 +54,7 @@ private:
     float p_probability;
     Image* p_image;
     Animation* p_animation;
-    std::vector<int> p_terrain;
+    TerrainCoords p_terrain;
     std::vector<ObjectLayer*> p_object_layers;
     std::unordered_map<std::string, std::string> p_properties;
 };

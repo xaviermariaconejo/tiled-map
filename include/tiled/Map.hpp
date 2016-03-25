@@ -81,10 +81,10 @@ public:
     std::vector<ObjectLayer*>& getObjectLayers();
     const std::vector<ObjectLayer*>& getObjectLayers() const;
 
-    void setTilesets(std::vector<Tileset>&& tileset);
-    void setTilesets(const std::vector<Tileset>& tileset);
-    std::vector<Tileset>& getTilesets();
-    const std::vector<Tileset>& getTilesets() const;
+    void setTilesets(std::vector<Tileset*>&& tileset);
+    void setTilesets(const std::vector<Tileset*>& tileset);
+    std::vector<Tileset*>& getTilesets();
+    const std::vector<Tileset*>& getTilesets() const;
 
     void setProperties(std::unordered_map<std::string, std::string>&& tileset);
     void setProperties(const std::unordered_map<std::string, std::string>& tileset);
