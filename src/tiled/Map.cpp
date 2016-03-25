@@ -145,11 +145,6 @@ int Map::getNextObjectId() const
     return p_next_object_id;
 }
 
-void Map::setLayers(std::vector<Layer*>&& layers)
-{
-    p_layers = layers;
-}
-
 void Map::setLayers(const std::vector<Layer*>& layers)
 {
     p_layers = layers;
@@ -163,11 +158,6 @@ std::vector<Layer*>& Map::getLayers()
 const std::vector<Layer*>& Map::getLayers() const
 {
     return p_layers;
-}
-
-void Map::setTileLayers(std::vector<TileLayer*>&& Tilelayers)
-{
-    p_tile_layers = Tilelayers;
 }
 
 void Map::setTileLayers(const std::vector<TileLayer*>& Tilelayers)
@@ -185,11 +175,6 @@ const std::vector<TileLayer*>& Map::getTileLayers() const
     return p_tile_layers;
 }
 
-void Map::setImageLayers(std::vector<ImageLayer*>&& Imagelayers)
-{
-    p_image_layers = Imagelayers;
-}
-
 void Map::setImageLayers(const std::vector<ImageLayer*>& Imagelayers)
 {
     p_image_layers = Imagelayers;
@@ -203,11 +188,6 @@ std::vector<ImageLayer*>& Map::getImageLayers()
 const std::vector<ImageLayer*>& Map::getImageLayers() const
 {
     return p_image_layers;
-}
-
-void Map::setObjectLayers(std::vector<ObjectLayer*>&& Objectlayers)
-{
-    p_object_layers = Objectlayers;
 }
 
 void Map::setObjectLayers(const std::vector<ObjectLayer*>& Objectlayers)
@@ -225,11 +205,6 @@ const std::vector<ObjectLayer*>& Map::getObjectLayers() const
     return p_object_layers;
 }
 
-void Map::setTilesets(std::vector<Tileset*>&& Tilesets)
-{
-    p_tileset = Tilesets;
-}
-
 void Map::setTilesets(const std::vector<Tileset*>& Tilesets)
 {
     p_tileset = Tilesets;
@@ -243,11 +218,6 @@ std::vector<Tileset*>& Map::getTilesets()
 const std::vector<Tileset*>& Map::getTilesets() const
 {
     return p_tileset;
-}
-
-void Map::setProperties(std::unordered_map<std::string, std::string>&& Properties)
-{
-    p_properties = Properties;
 }
 
 void Map::setProperties(const std::unordered_map<std::string, std::string>& Properties)

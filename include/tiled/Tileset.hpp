@@ -15,12 +15,6 @@ public:
     Tileset();
     ~Tileset();
 
-    void setName(const std::string& name);
-    const std::string& getName() const;
-
-    void setFileName(const std::string& file_name);
-    const std::string& getFileName() const;
-
     void setFirstGId(int first_g_id);
     int getTFirstGId() const;
 
@@ -48,22 +42,24 @@ public:
     void setTileOffsetY(int tile_offset_y);
     int getTileOffsetY() const;
 
-    void setImage(Image&& image);
-    void setImage(const Image& image);
-    Image& getImage();
-    const Image& getImage() const;
+    void setName(const std::string& name);
+    const std::string& getName() const;
 
-    void setTiles(std::vector<Tile*>&& Tiles);
+    void setFileName(const std::string& file_name);
+    const std::string& getFileName() const;
+
+    void setImage(const Image* image);
+    Image* getImage();
+    const Image* getImage() const;
+
     void setTiles(const std::vector<Tile*>& Tiles);
     std::vector<Tile*>& getTiles();
     const std::vector<Tile*>& getTiles() const;
 
-    void setTerrains(std::vector<Terrain*>&& Terrains);
     void setTerrains(const std::vector<Terrain*>& Terrains);
     std::vector<Terrain*>& getTerrains();
     const std::vector<Terrain*>& getTerrains() const;
 
-    void setProperties(std::unordered_map<std::string, std::string>&& tileset);
     void setProperties(const std::unordered_map<std::string, std::string>& tileset);
     std::unordered_map<std::string, std::string>& getProperties();
     const std::unordered_map<std::string, std::string>& getProperties() const;

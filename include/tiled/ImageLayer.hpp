@@ -1,21 +1,22 @@
-#ifndef TILED_IMAGELAYER_HPP
-#define TILED_IMAGELAYER_HPP
+#ifndef TILED_IMAGE_LAYER_HPP
+#define TILED_IMAGE_LAYER_HPP
+#include "Layer.hpp"
 
 namespace tiled
 {
-class ImageLayer : Layer
+class Image;
+class ImageLayer : public Layer
 {
 public:
     ImageLayer();
-    ~ImageLayer();
+    ~ImageLayer() override;
 
-    void setImage(Image&& image);
-    void setImage(const Image& image);
-    Image& getImage();
-    const Image& getImage() const;
+    void setImage(const Image* image);
+    Image* getImage();
+    const Image* getImage() const;
 
 private:
-    Image p_image;
-}
+    Image* p_image;
+};
 }
 #endif

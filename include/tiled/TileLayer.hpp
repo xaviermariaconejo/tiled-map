@@ -1,13 +1,14 @@
 #ifndef TILED_TILELAYER_HPP
 #define TILED_TILELAYER_HPP
+#include "Layer.hpp"
 
 namespace tiled
 {
-class TileLayer : Layer
+class TileLayer : public Layer
 {
 public:
     TileLayer();
-    ~TileLayer();
-}
+    ~TileLayer() override;
+};
 }
 #endif

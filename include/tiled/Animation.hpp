@@ -17,6 +17,6 @@ public:
 
 private:
     int p_tile_id, p_duration;
-}
+};
 }
 #endif

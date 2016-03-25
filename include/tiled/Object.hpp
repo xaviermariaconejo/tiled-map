@@ -12,26 +12,11 @@ public:
     Object();
     ~Object();
 
-    void setName(const std::string& name);
-    const std::string& getName() const;
-
-    void setType(const std::string& type);
-    const std::string& getType() const;
-
-    void setWidth(int width);
-    int getWidth() const;
-
-    void setHeight(int height);
-    int getHeight() const;
-
     void setX(int x);
     int getX() const;
 
     void setY(int y);
     int getY() const;
-
-    void setVisibility(Visibility visibility);
-    const Visibility getVisibility() const;
 
     void setId(int id);
     int getId() const;
@@ -39,10 +24,24 @@ public:
     void setGId(int g_id);
     int getGId() const;
 
+    void setWidth(int width);
+    int getWidth() const;
+
+    void setHeight(int height);
+    int getHeight() const;
+
+    void setVisibility(Visibility visibility);
+    const Visibility getVisibility() const;
+
     void setRotation(float rotation);
     float getRotation() const;
 
-    void setProperties(std::unordered_map<std::string, std::string>&& tileset);
+    void setName(const std::string& name);
+    const std::string& getName() const;
+
+    void setType(const std::string& type);
+    const std::string& getType() const;
+
     void setProperties(const std::unordered_map<std::string, std::string>& tileset);
     std::unordered_map<std::string, std::string>& getProperties();
     const std::unordered_map<std::string, std::string>& getProperties() const;

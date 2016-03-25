@@ -7,18 +7,9 @@ namespace tiled
 class Image
 {
 public:
-    enum class Encoding { NONE, BASE64, CSV, COUNT }
+    enum class Encoding { NONE, BASE64, CSV, COUNT };
     Image();
     ~Image();
-
-    void setFormat(const std::string& format);
-    const std::string& getFormat() const;
-
-    void setSource(const std::string& source);
-    const std::string& getSource() const;
-
-    void setTrans(const std::string& trans);
-    const std::string& getTrans() const;
 
     void setId(int id);
     int getId() const;
@@ -31,6 +22,15 @@ public:
 
     void setEncoding(Encoding encoding);
     Encoding getEncoding() const;
+
+    void setFormat(const std::string& format);
+    const std::string& getFormat() const;
+
+    void setSource(const std::string& source);
+    const std::string& getSource() const;
+
+    void setTrans(const std::string& trans);
+    const std::string& getTrans() const;
 
     void setCompression(const std::string& compression);
     const std::string& getCompression() const;
