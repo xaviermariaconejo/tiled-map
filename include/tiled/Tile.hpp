@@ -30,7 +30,7 @@ public:
     Animation* geAnimation();
     const Animation* getAnimation() const;
 
-    void setTerrain(const TerrainCoords* Terrain);
+    void setTerrain(const TerrainCoords* terrain);
     TerrainCoords* getTerrain();
     const TerrainCoords* getTerrain() const;
 
@@ -38,7 +38,7 @@ public:
     std::vector<ObjectLayer*>& getObjectLayers();
     const std::vector<ObjectLayer*>& getObjectLayers() const;
 
-    void setProperties(const std::unordered_map<std::string, std::string>& tileset);
+    void setProperties(const std::unordered_map<std::string, std::string>& properties);
     std::unordered_map<std::string, std::string>& getProperties();
     const std::unordered_map<std::string, std::string>& getProperties() const;
 

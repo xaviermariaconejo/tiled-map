@@ -12,7 +12,9 @@ p_background_color(Color{128, 128, 128, 255})
 }
 
 Map::~Map()
-{}
+{
+
+}
 
 void Map::setVersion(const std::string& version)
 {

@@ -42,7 +42,7 @@ public:
     void setType(const std::string& type);
     const std::string& getType() const;
 
-    void setProperties(const std::unordered_map<std::string, std::string>& tileset);
+    void setProperties(const std::unordered_map<std::string, std::string>& properties);
     std::unordered_map<std::string, std::string>& getProperties();
     const std::unordered_map<std::string, std::string>& getProperties() const;
 
