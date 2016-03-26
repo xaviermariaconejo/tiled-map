@@ -1,4 +1,5 @@
 #include "ImageLayer.hpp"
+#include "Image.hpp"
 
 using namespace tiled;
 

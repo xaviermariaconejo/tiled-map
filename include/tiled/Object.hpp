@@ -5,6 +5,8 @@
 
 namespace tiled
 {
+//TODO: Faltan ellipse, polygon y polyline
+class Image;
 class Object
 {
 public:
@@ -42,6 +44,10 @@ public:
     void setType(const std::string& type);
     const std::string& getType() const;
 
+    void setImage(Image* image);
+    Image* getImage();
+    const Image* getImage() const;
+
     void setProperties(const std::unordered_map<std::string, std::string>& properties);
     std::unordered_map<std::string, std::string>& getProperties();
     const std::unordered_map<std::string, std::string>& getProperties() const;
@@ -56,8 +62,9 @@ private:
         p_id,
         p_g_id;
     Visibility p_visibility;
-    std::string p_name,p_type;
     float p_rotation;
+    std::string p_name,p_type;
+    Image* p_image;
     std::unordered_map<std::string, std::string> p_properties;
 };
 } /* tiled */

@@ -1,4 +1,5 @@
 #include "Tile.hpp"
+#include "Image.hpp"
 
 using namespace tiled;
 
@@ -9,7 +10,6 @@ Tile::Tile()
 Tile::~Tile()
 {
     delete p_image;
-    delete p_animation;
     delete p_terrain;
 }
 
@@ -48,21 +48,6 @@ const Image* Tile::getImage() const
     return p_image;
 }
 
-void Tile::setAnimation(Animation* animation)
-{
-    p_animation = animation;
-}
-
-Animation* Tile::getAnimation()
-{
-    return p_animation;
-}
-
-const Animation* Tile::getAnimation() const
-{
-    return p_animation;
-}
-
 void Tile::setTerrain(TerrainCoords* terrain)
 {
     p_terrain = terrain;
@@ -91,6 +76,21 @@ std::vector<ObjectLayer*>& Tile::getObjectLayers()
 const std::vector<ObjectLayer*>& Tile::getObjectLayers() const
 {
     return p_object_layers;
+}
+
+void Tile::setAnimation(const std::vector<Frame*>& animation)
+{
+    p_animation = animation;
+}
+
+std::vector<Frame*>& Tile::getAnimation()
+{
+    return p_animation;
+}
+
+const std::vector<Frame*>& Tile::getAnimation() const
+{
+    return p_animation;
 }
 
 void Tile::setProperties(const std::unordered_map<std::string, std::string>& properties)

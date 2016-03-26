@@ -1,4 +1,5 @@
 #include "Tileset.hpp"
+#include "Image.hpp"
 
 using namespace tiled;
 

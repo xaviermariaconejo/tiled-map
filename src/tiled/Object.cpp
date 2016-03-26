@@ -1,4 +1,5 @@
 #include "Object.hpp"
+#include "Image.hpp"
 
 using namespace tiled;
 
@@ -110,10 +111,26 @@ const std::string& Object::getType() const
     return p_type;
 }
 
+void Object::setImage(Image* image)
+{
+    p_image = image;
+}
+
+Image* Object::getImage()
+{
+   return p_image;
+}
+
+const Image* Object::getImage() const
+{
+    return p_image;
+}
+
 void Object::setProperties(const std::unordered_map<std::string, std::string>& properties)
 {
     p_properties = properties;
 }
+
 std::unordered_map<std::string, std::string>& Object::getProperties()
 {
     return p_properties;

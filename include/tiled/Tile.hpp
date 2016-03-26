@@ -7,9 +7,9 @@
 
 namespace tiled
 {
-class Image{ public: ~Image(){}};
+class Image;
 class ObjectLayer;
-class Animation{public: ~Animation(){}};
+class Frame;
 class Tile
 {
 public:
@@ -26,10 +26,6 @@ public:
     Image* getImage();
     const Image* getImage() const;
 
-    void setAnimation(Animation* animation);
-    Animation* getAnimation();
-    const Animation* getAnimation() const;
-
     void setTerrain(TerrainCoords* terrain);
     TerrainCoords* getTerrain();
     const TerrainCoords* getTerrain() const;
@@ -37,6 +33,10 @@ public:
     void setObjectLayers(const std::vector<ObjectLayer*>& Objectlayers);
     std::vector<ObjectLayer*>& getObjectLayers();
     const std::vector<ObjectLayer*>& getObjectLayers() const;
+
+    void setAnimation(const std::vector<Frame*>& animation);
+    std::vector<Frame*>& getAnimation();
+    const std::vector<Frame*>& getAnimation() const;
 
     void setProperties(const std::unordered_map<std::string, std::string>& properties);
     std::unordered_map<std::string, std::string>& getProperties();
@@ -48,9 +48,9 @@ private:
     int p_id;
     float p_probability;
     Image* p_image;
-    Animation* p_animation;
     TerrainCoords* p_terrain;
     std::vector<ObjectLayer*> p_object_layers;
+    std::vector<Frame*> p_animation;
     std::unordered_map<std::string, std::string> p_properties;
 };
 } /* tiled */

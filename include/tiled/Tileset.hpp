@@ -7,7 +7,7 @@
 namespace tiled
 {
 class Tile;
-class Image{public: ~Image(){}};
+class Image;
 class Terrain;
 class Tileset
 {

@@ -4,7 +4,7 @@
 
 namespace tiled
 {
-class Image{public: ~Image(){}};
+class Image;
 class ImageLayer : public Layer
 {
 public:
