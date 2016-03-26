@@ -1,23 +1,34 @@
 #include "Tileset.hpp"
+#include "Tile.hpp"
+#include "Terrain.hpp"
 #include "Image.hpp"
 
 using namespace tiled;
 
 Tileset::Tileset()
 {
+
 }
 
 Tileset::~Tileset()
 {
     delete p_image;
+    for(Tile* tile : p_tiles)
+    {
+        delete tile;
+    }
+    for (Terrain* terrain : p_terrains)
+    {
+        delete terrain;
+    }
 }
 
-void Tileset::setFirstGId(int first_g_id)
+void Tileset::setGId(int first_g_id)
 {
     p_first_g_id = first_g_id;
 }
 
-int Tileset::getTFirstGId() const
+int Tileset::getGId() const
 {
     return p_first_g_id;
 }

@@ -5,23 +5,16 @@
 
 namespace tiled
 {
-//TODO: Faltan ellipse, polygon y polyline
-class Image;
 class Object
 {
 public:
-    enum class Visibility { VISIBLE, INVISIBLE, COUNT };
-    Object();
-    ~Object();
+    enum class Shape { RECTANGLE, ELLIPSE, POLYGON, POLYLINE, COUNT };
 
     void setX(int x);
     int getX() const;
 
     void setY(int y);
     int getY() const;
-
-    void setId(int id);
-    int getId() const;
 
     void setGId(int g_id);
     int getGId() const;
@@ -32,11 +25,14 @@ public:
     void setHeight(int height);
     int getHeight() const;
 
-    void setVisibility(Visibility visibility);
-    const Visibility getVisibility() const;
+    void setVisibility(bool visibility);
+    const bool getVisibility() const;
 
     void setRotation(float rotation);
     float getRotation() const;
+
+    void setShape(Shape shape);
+    Shape getShape() const;
 
     void setName(const std::string& name);
     const std::string& getName() const;
@@ -44,27 +40,23 @@ public:
     void setType(const std::string& type);
     const std::string& getType() const;
 
-    void setImage(Image* image);
-    Image* getImage();
-    const Image* getImage() const;
-
     void setProperties(const std::unordered_map<std::string, std::string>& properties);
     std::unordered_map<std::string, std::string>& getProperties();
     const std::unordered_map<std::string, std::string>& getProperties() const;
 
 
+protected:
+    Shape p_shape;
 
 private:
     int p_width,
         p_height,
         p_x,
         p_y,
-        p_id,
         p_g_id;
-    Visibility p_visibility;
+    bool p_visibility;
     float p_rotation;
-    std::string p_name,p_type;
-    Image* p_image;
+    std::string p_name, p_type;
     std::unordered_map<std::string, std::string> p_properties;
 };
 } /* tiled */

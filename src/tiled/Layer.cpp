@@ -62,24 +62,14 @@ int Layer::getOffsetY() const
     return p_offset_y;
 }
 
-void Layer::setVisibility(Visibility visibility)
+void Layer::setVisibility(bool visibility)
 {
     p_visibility = visibility;
 }
 
-Layer::Visibility Layer::getVisibility() const
+bool Layer::getVisibility() const
 {
     return p_visibility;
-}
-
-void Layer::setEncoding(Encoding encoding)
-{
-    p_encoding = encoding;
-}
-
-Layer::Encoding Layer::getEncoding() const
-{
-    return p_encoding;
 }
 
 void Layer::setOpacity(float opacity)
@@ -92,6 +82,16 @@ float Layer::getOpacity() const
     return p_opacity;
 }
 
+void Layer::setType(LayerType type)
+{
+    p_type = type;
+}
+
+Layer::LayerType Layer::getType() const
+{
+    return p_type;
+}
+
 void Layer::setName(const std::string& name)
 {
     p_name = name;
@@ -100,26 +100,6 @@ void Layer::setName(const std::string& name)
 const std::string& Layer::getName() const
 {
     return p_name;
-}
-
-void Layer::setType(const std::string& type)
-{
-    p_type = type;
-}
-
-const std::string& Layer::getType() const
-{
-    return p_type;
-}
-
-void Layer::setCompression(const std::string& compression)
-{
-    p_compression = compression;
-}
-
-const std::string& Layer::getCompression() const
-{
-    return p_compression;
 }
 
 void Layer::setProperties(const std::unordered_map<std::string, std::string>& properties)

@@ -15,8 +15,8 @@ public:
     Tileset();
     ~Tileset();
 
-    void setFirstGId(int first_g_id);
-    int getTFirstGId() const;
+    void setGId(int first_g_id);
+    int getGId() const;
 
     void setTileWidth(int tile_width);
     int getTileWidth() const;

@@ -1,16 +1,26 @@
 #include "Tile.hpp"
-#include "Image.hpp"
+#include "Object.hpp"
+#include "Frame.hpp"
 
 using namespace tiled;
 
-Tile::Tile()
+Tile::Tile():
+p_parent(nullptr)
 {
+
 }
 
 Tile::~Tile()
 {
-    delete p_image;
-    delete p_terrain;
+    p_parent = nullptr;
+    for(Object* object : p_objects)
+    {
+        delete object;
+    }
+    for(Frame* frame : p_animation)
+    {
+        delete frame;
+    }
 }
 
 void Tile::setId(int id)
@@ -23,6 +33,11 @@ int Tile::getId() const
     return p_id;
 }
 
+int Tile::getGId() const
+{
+    return p_id;/////////////////////////////////
+}
+
 void Tile::setProbability(float probability)
 {
     p_probability = probability;
@@ -33,49 +48,49 @@ float Tile::getProbability() const
     return p_probability;
 }
 
-void Tile::setImage(Image* image)
-{
-    p_image = image;
-}
-
-Image* Tile::getImage()
-{
-   return p_image;
-}
-
-const Image* Tile::getImage() const
-{
-    return p_image;
-}
-
-void Tile::setTerrain(TerrainCoords* terrain)
+void Tile::setTerrain(TerrainCoords& terrain)
 {
     p_terrain = terrain;
 }
 
-TerrainCoords* Tile::getTerrain()
+TerrainCoords& Tile::getTerrain()
 {
     return p_terrain;
 }
 
-const TerrainCoords* Tile::getTerrain() const
+const TerrainCoords& Tile::getTerrain() const
 {
     return p_terrain;
 }
 
-void Tile::setObjectLayers(const std::vector<ObjectLayer*>& Objectlayers)
+void Tile::setParent(Tileset* parent)
 {
-    p_object_layers = Objectlayers;
+    p_parent = parent;
 }
 
-std::vector<ObjectLayer*>& Tile::getObjectLayers()
+Tileset* Tile::getParent()
 {
-    return p_object_layers;
+    return p_parent;
 }
 
-const std::vector<ObjectLayer*>& Tile::getObjectLayers() const
+const Tileset* Tile::getParent() const
 {
-    return p_object_layers;
+    return p_parent;
+}
+
+void Tile::setObjects(const std::vector<Object*>& objects)
+{
+    p_objects = objects;
+}
+
+std::vector<Object*>& Tile::getObjects()
+{
+    return p_objects;
+}
+
+const std::vector<Object*>& Tile::getObjects() const
+{
+    return p_objects;
 }
 
 void Tile::setAnimation(const std::vector<Frame*>& animation)

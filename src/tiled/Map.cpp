@@ -1,8 +1,14 @@
 #include "Map.hpp"
+#include "Layer.hpp"
+#include "TileLayer.hpp"
+#include "ImageLayer.hpp"
+#include "ObjectLayer.hpp"
+#include "Tileset.hpp"
 
 using namespace tiled;
 
 Map::Map():
+p_hex_side_length(-1),
 p_render_order(RenderOrder::RIGHT_DOWN),
 p_stagger_axis(StaggerAxis::NONE),
 p_stagger_index(StaggerIndex::NONE),
@@ -13,7 +19,26 @@ p_background_color(Color{128, 128, 128, 255})
 
 Map::~Map()
 {
-
+    for(Layer* layer : p_layers)
+    {
+        delete layer;
+    }
+    for(TileLayer* tile_layer : p_tile_layers)
+    {
+        delete tile_layer;
+    }
+    for(ImageLayer* image_layer : p_image_layers)
+    {
+        delete image_layer;
+    }
+    for(ObjectLayer* object_layer : p_object_layers)
+    {
+        delete object_layer;
+    }
+    for(Tileset* tileset : p_tileset)
+    {
+        delete tileset;
+    }
 }
 
 void Map::setVersion(const std::string& version)
@@ -162,9 +187,9 @@ const std::vector<Layer*>& Map::getLayers() const
     return p_layers;
 }
 
-void Map::setTileLayers(const std::vector<TileLayer*>& Tilelayers)
+void Map::setTileLayers(const std::vector<TileLayer*>& tilelayers)
 {
-    p_tile_layers = Tilelayers;
+    p_tile_layers = tilelayers;
 }
 
 std::vector<TileLayer*>& Map::getTileLayers()
@@ -177,9 +202,9 @@ const std::vector<TileLayer*>& Map::getTileLayers() const
     return p_tile_layers;
 }
 
-void Map::setImageLayers(const std::vector<ImageLayer*>& Imagelayers)
+void Map::setImageLayers(const std::vector<ImageLayer*>& imagelayers)
 {
-    p_image_layers = Imagelayers;
+    p_image_layers = imagelayers;
 }
 
 std::vector<ImageLayer*>& Map::getImageLayers()
@@ -192,9 +217,9 @@ const std::vector<ImageLayer*>& Map::getImageLayers() const
     return p_image_layers;
 }
 
-void Map::setObjectLayers(const std::vector<ObjectLayer*>& Objectlayers)
+void Map::setObjectLayers(const std::vector<ObjectLayer*>& objectlayers)
 {
-    p_object_layers = Objectlayers;
+    p_object_layers = objectlayers;
 }
 
 std::vector<ObjectLayer*>& Map::getObjectLayers()
@@ -207,9 +232,9 @@ const std::vector<ObjectLayer*>& Map::getObjectLayers() const
     return p_object_layers;
 }
 
-void Map::setTilesets(const std::vector<Tileset*>& Tilesets)
+void Map::setTilesets(const std::vector<Tileset*>& tilesets)
 {
-    p_tileset = Tilesets;
+    p_tileset = tilesets;
 }
 
 std::vector<Tileset*>& Map::getTilesets()
@@ -222,9 +247,9 @@ const std::vector<Tileset*>& Map::getTilesets() const
     return p_tileset;
 }
 
-void Map::setProperties(const std::unordered_map<std::string, std::string>& Properties)
+void Map::setProperties(const std::unordered_map<std::string, std::string>& properties)
 {
-    p_properties = Properties;
+    p_properties = properties;
 }
 
 std::unordered_map<std::string, std::string>& Map::getProperties()

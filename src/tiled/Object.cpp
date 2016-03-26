@@ -1,15 +1,6 @@
 #include "Object.hpp"
-#include "Image.hpp"
 
 using namespace tiled;
-
-Object::Object()
-{
-}
-
-Object::~Object()
-{
-}
 
 void Object::setX(int x)
 {
@@ -29,16 +20,6 @@ void Object::setY(int y)
 int Object::getY() const
 {
     return p_y;
-}
-
-void Object::setId(int id)
-{
-    p_id = id;
-}
-
-int Object::getId() const
-{
-    return p_id;
 }
 
 void Object::setGId(int g_id)
@@ -71,12 +52,12 @@ int Object::getHeight() const
     return p_height;
 }
 
-void Object::setVisibility(Visibility visibility)
+void Object::setVisibility(bool visibility)
 {
     p_visibility = visibility;
 }
 
-const Object::Visibility Object::getVisibility() const
+const bool Object::getVisibility() const
 {
     return p_visibility;
 }
@@ -89,6 +70,16 @@ void Object::setRotation(float rotation)
 float Object::getRotation() const
 {
     return p_rotation;
+}
+
+void Object::setShape(Shape shape)
+{
+    p_shape = shape;
+}
+
+Object::Shape Object::getShape() const
+{
+    return p_shape;
 }
 
 void Object::setName(const std::string& name)
@@ -109,21 +100,6 @@ void Object::setType(const std::string& type)
 const std::string& Object::getType() const
 {
     return p_type;
-}
-
-void Object::setImage(Image* image)
-{
-    p_image = image;
-}
-
-Image* Object::getImage()
-{
-   return p_image;
-}
-
-const Image* Object::getImage() const
-{
-    return p_image;
 }
 
 void Object::setProperties(const std::unordered_map<std::string, std::string>& properties)

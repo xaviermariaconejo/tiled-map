@@ -8,9 +8,7 @@ namespace tiled
 class Layer
 {
 public:
-    enum class Visibility { VISIBLE, INVISIBLE, COUNT };
-    enum class Encoding { NONE, BASE64, CSV, COUNT };
-    virtual ~Layer();
+    enum class LayerType { TILE_LAYER, IMAGE_LAYER, OBJECT_LAYER, COUNT };
 
     void setWidth(int width);
     int getWidth() const;
@@ -30,29 +28,25 @@ public:
     void setOffsetY(int offset_y);
     int getOffsetY() const;
 
-    void setVisibility(Visibility visibility);
-    Visibility getVisibility() const;
-
-    void setEncoding(Encoding encoding);
-    Encoding getEncoding() const;
+    void setVisibility(bool visibility);
+    bool getVisibility() const;
 
     void setOpacity(float opacity);
     float getOpacity() const;
 
+    void setType(LayerType type);
+    LayerType getType() const;
+
     void setName(const std::string& name);
     const std::string& getName() const;
-
-    void setType(const std::string& type);
-    const std::string& getType() const;
-
-    void setCompression(const std::string& compression);
-    const std::string& getCompression() const;
 
     void setProperties(const std::unordered_map<std::string, std::string>& properties);
     std::unordered_map<std::string, std::string>& getProperties();
     const std::unordered_map<std::string, std::string>& getProperties() const;
 
 
+protected:
+    LayerType p_type;
 
 private:
     int p_x,
@@ -61,10 +55,9 @@ private:
         p_height,
         p_offset_x,
         p_offset_y;
-    Visibility p_visibility;
-    Encoding p_encoding;
+    bool p_visibility;
     float p_opacity;
-    std::string p_name,p_type, p_compression;
+    std::string p_name;
     std::unordered_map<std::string, std::string> p_properties;
 };
 } /* tiled */

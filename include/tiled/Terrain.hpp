@@ -5,17 +5,19 @@
 
 namespace tiled
 {
+class Tile;
 class Terrain
 {
 public:
     Terrain();
     ~Terrain();
 
-    void setTile(int tile);
-    int getTile() const;
-
     void setName(const std::string& name);
     const std::string& getName() const;
+
+    void setTile(Tile* tile);
+    Tile* getTile();
+    const Tile* getTile() const;
 
     void setProperties(const std::unordered_map<std::string, std::string>& tileset);
     std::unordered_map<std::string, std::string>& getProperties();
@@ -24,8 +26,8 @@ public:
 
 
 private:
-    int p_tile;
     std::string p_name;
+    Tile* p_tile;
     std::unordered_map<std::string, std::string> p_properties;
 };
 } /* tiled */

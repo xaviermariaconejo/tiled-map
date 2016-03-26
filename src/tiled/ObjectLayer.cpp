@@ -1,13 +1,20 @@
 #include "ObjectLayer.hpp"
+#include "Object.hpp"
 
 using namespace tiled;
 
-ObjectLayer::ObjectLayer()
+ObjectLayer::ObjectLayer():
+p_draw_order(DrawOrder::INDEX)
 {
+    p_type = Layer::LayerType::OBJECT_LAYER;
 }
 
 ObjectLayer::~ObjectLayer()
 {
+    for(Object* object : p_objects)
+    {
+        delete object;
+    }
 }
 
 void ObjectLayer::setDrawOrder(DrawOrder draw_order)

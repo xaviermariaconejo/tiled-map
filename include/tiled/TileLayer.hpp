@@ -8,7 +8,7 @@ class TileLayer : public Layer
 {
 public:
     TileLayer();
-    ~TileLayer() override;
+    ~TileLayer();
 };
 }
 #endif

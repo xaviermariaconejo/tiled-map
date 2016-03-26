@@ -3,8 +3,10 @@
 
 using namespace tiled;
 
-ImageLayer::ImageLayer()
+ImageLayer::ImageLayer():
+p_image(nullptr)
 {
+    p_type = Layer::LayerType::IMAGE_LAYER;
 }
 
 ImageLayer::~ImageLayer()
