@@ -13,97 +13,97 @@ Tile::~Tile()
     delete p_terrain;
 }
 
-void setId(int id)
+void Tile::setId(int id)
 {
     p_id = id;
 }
 
-int getId() const
+int Tile::getId() const
 {
     return p_id;
 }
 
-void setProbability(float probability)
+void Tile::setProbability(float probability)
 {
     p_probability = probability;
 }
 
-float getProbability() const
+float Tile::getProbability() const
 {
     return p_probability;
 }
 
-void setImage(const Image* image)
+void Tile::setImage(Image* image)
 {
     p_image = image;
 }
 
-Image* getImage()
+Image* Tile::getImage()
 {
    return p_image;
 }
 
-const Image* getImage() const
+const Image* Tile::getImage() const
 {
     return p_image;
 }
 
-void setAnimation(const Animation* animation)
+void Tile::setAnimation(Animation* animation)
 {
     p_animation = animation;
 }
 
-Animation* geAnimation()
+Animation* Tile::getAnimation()
 {
     return p_animation;
 }
 
-const Animation* getAnimation() const
+const Animation* Tile::getAnimation() const
 {
     return p_animation;
 }
 
-void setTerrain(const TerrainCoords* terrain)
+void Tile::setTerrain(TerrainCoords* terrain)
 {
     p_terrain = terrain;
 }
 
-TerrainCoords* getTerrain()
+TerrainCoords* Tile::getTerrain()
 {
     return p_terrain;
 }
 
-const TerrainCoords* getTerrain() const
+const TerrainCoords* Tile::getTerrain() const
 {
     return p_terrain;
 }
 
-void setObjectLayers(const std::vector<ObjectLayer*>& Objectlayers)
+void Tile::setObjectLayers(const std::vector<ObjectLayer*>& Objectlayers)
 {
     p_object_layers = Objectlayers;
 }
 
-std::vector<ObjectLayer*>& getObjectLayers()
+std::vector<ObjectLayer*>& Tile::getObjectLayers()
 {
     return p_object_layers;
 }
 
-const std::vector<ObjectLayer*>& getObjectLayers() const
+const std::vector<ObjectLayer*>& Tile::getObjectLayers() const
 {
     return p_object_layers;
 }
 
-void setProperties(const std::unordered_map<std::string, std::string>& properties)
+void Tile::setProperties(const std::unordered_map<std::string, std::string>& properties)
 {
     p_properties = properties;
 }
 
-std::unordered_map<std::string, std::string>& getProperties()
+std::unordered_map<std::string, std::string>& Tile::getProperties()
 {
     return p_properties;
 }
 
-const std::unordered_map<std::string, std::string>& getProperties() const
+const std::unordered_map<std::string, std::string>& Tile::getProperties() const
 {
     return p_properties;
 }

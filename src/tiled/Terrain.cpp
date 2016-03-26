@@ -10,37 +10,37 @@ Terrain::~Terrain()
 {
 }
 
-void setTile(int tile)
+void Terrain::setTile(int tile)
 {
     p_tile = tile;
 }
 
-int getTile() const
+int Terrain::getTile() const
 {
     return p_tile;
 }
 
-void setName(const std::string& name)
+void Terrain::setName(const std::string& name)
 {
     p_name = name;
 }
 
-const std::string& getName() const
+const std::string& Terrain::getName() const
 {
     return p_name;
 }
 
-void setProperties(const std::unordered_map<std::string, std::string>& properties)
+void Terrain::setProperties(const std::unordered_map<std::string, std::string>& properties)
 {
     p_properties = properties;
 }
 
-std::unordered_map<std::string, std::string>& getProperties()
+std::unordered_map<std::string, std::string>& Terrain::getProperties()
 {
     return p_properties;
 }
 
-const std::unordered_map<std::string, std::string>& getProperties() const
+const std::unordered_map<std::string, std::string>& Terrain::getProperties() const
 {
     return p_properties;
 }

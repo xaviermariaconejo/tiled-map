@@ -11,172 +11,172 @@ Tileset::~Tileset()
     delete p_image;
 }
 
-void setFirstGId(int first_g_id)
+void Tileset::setFirstGId(int first_g_id)
 {
     p_first_g_id = first_g_id;
 }
 
-int getTFirstGId() const
+int Tileset::getTFirstGId() const
 {
     return p_first_g_id;
 }
 
-void setTileWidth(int tile_width)
+void Tileset::setTileWidth(int tile_width)
 {
     p_tile_width = tile_width;
 }
 
-int getTileWidth() const
+int Tileset::getTileWidth() const
 {
     return p_tile_width;
 }
 
-void setTileHeight(int tile_height)
+void Tileset::setTileHeight(int tile_height)
 {
     p_tile_height = tile_height;
 }
 
-int getTileHeight() const
+int Tileset::getTileHeight() const
 {
     return p_tile_height;
 }
 
-void setSpacing(int spacing)
+void Tileset::setSpacing(int spacing)
 {
     p_spacing = spacing;
 }
 
-int getSpacing() const
+int Tileset::getSpacing() const
 {
-    return spacing;
+    return p_spacing;
 }
 
-void setMargin(int margin)
+void Tileset::setMargin(int margin)
 {
     p_margin = margin;
 }
 
-int getMargin() const
+int Tileset::getMargin() const
 {
-    return margin;
+    return p_margin;
 }
 
-void setTileCount(int tile_count)
+void Tileset::setTileCount(int tile_count)
 {
     p_tile_count = tile_count;
 }
 
-int getTileCount() const
+int Tileset::getTileCount() const
 {
     return p_tile_count;
 }
 
-void setColumns(int columns)
+void Tileset::setColumns(int columns)
 {
     p_columns = columns;
 }
 
-int getColumns() const
+int Tileset::getColumns() const
 {
     return p_columns;
 }
 
-void setTileOffsetX(int tile_offset_x)
+void Tileset::setTileOffsetX(int tile_offset_x)
 {
     p_tile_offset_x = tile_offset_x;
 }
 
-int getTileOffsetX() const
+int Tileset::getTileOffsetX() const
 {
-    return p_offset_x;
+    return p_tile_offset_x;
 }
 
-void setTileOffsetY(int tile_offset_y)
+void Tileset::setTileOffsetY(int tile_offset_y)
 {
     p_tile_offset_y = tile_offset_y;
 }
 
-int getTileOffsetY() const
+int Tileset::getTileOffsetY() const
 {
     return p_tile_offset_y;
 }
 
-void setName(const std::string& name)
+void Tileset::setName(const std::string& name)
 {
     p_name = name;
 }
 
-const std::string& getName() const
+const std::string& Tileset::getName() const
 {
     return p_name;
 }
 
-void setFileName(const std::string& file_name)
+void Tileset::setFileName(const std::string& file_name)
 {
     p_file_name = file_name;
 }
 
-const std::string& getFileName() const
+const std::string& Tileset::getFileName() const
 {
     return p_file_name;
 }
 
-void setImage(const Image* image)
+void Tileset::setImage(Image* image)
 {
     p_image = image;
 }
 
-Image* getImage()
+Image* Tileset::getImage()
 {
     return p_image;
 }
 
-const Image* getImage() const
+const Image* Tileset::getImage() const
 {
     return p_image;
 }
 
-void setTiles(const std::vector<Tile*>& Tiles)
+void Tileset::setTiles(const std::vector<Tile*>& Tiles)
 {
     p_tiles = Tiles;
 }
 
-std::vector<Tile*>& getTiles()
+std::vector<Tile*>& Tileset::getTiles()
 {
     return p_tiles;
 }
 
-const std::vector<Tile*>& getTiles() const
+const std::vector<Tile*>& Tileset::getTiles() const
 {
     return p_tiles;
 }
 
-void setTerrains(const std::vector<Terrain*>& Terrains)
+void Tileset::setTerrains(const std::vector<Terrain*>& Terrains)
 {
     p_terrains = Terrains;
 }
 
-std::vector<Terrain*>& getTerrains()
+std::vector<Terrain*>& Tileset::getTerrains()
 {
     return p_terrains;
 }
 
-const std::vector<Terrain*>& getTerrains() const
+const std::vector<Terrain*>& Tileset::getTerrains() const
 {
     return p_terrains;
 }
 
-void setProperties(const std::unordered_map<std::string, std::string>& properties)
+void Tileset::setProperties(const std::unordered_map<std::string, std::string>& properties)
 {
     p_properties = properties;
 }
 
-std::unordered_map<std::string, std::string>& getProperties()
+std::unordered_map<std::string, std::string>& Tileset::getProperties()
 {
     return p_properties;
 }
 
-const std::unordered_map<std::string, std::string>& getProperties() const
+const std::unordered_map<std::string, std::string>& Tileset::getProperties() const
 {
     return p_properties;
 }

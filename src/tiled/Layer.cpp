@@ -2,141 +2,137 @@
 
 using namespace tiled;
 
-virtual ~Layer()
-{
-}
-
-void setWidth(int width)
+void Layer::setWidth(int width)
 {
     p_width = width;
 }
 
-int getWidth() const
+int Layer::getWidth() const
 {
     return p_width;
 }
 
-void setHeight(int height)
+void Layer::setHeight(int height)
 {
     p_height = height;
 }
 
-int getHeight() const
+int Layer::getHeight() const
 {
-    return height;
+    return p_height;
 }
 
-void setX(int x)
+void Layer::setX(int x)
 {
     p_x = x;
 }
 
-int getX() const
+int Layer::getX() const
 {
     return p_x;
 }
 
-void setY(int y)
+void Layer::setY(int y)
 {
     p_y = y;
 }
 
-int getY() const
+int Layer::getY() const
 {
     return p_y;
 }
 
-void setOffsetX(int offset_x)
+void Layer::setOffsetX(int offset_x)
 {
     p_offset_x = offset_x;
 }
 
-int getOffsetX() const
+int Layer::getOffsetX() const
 {
     return p_offset_x;
 }
 
-void setOffsetY(int offset_y)
+void Layer::setOffsetY(int offset_y)
 {
     p_offset_y = offset_y;
 }
 
-int getOffsetY() const
+int Layer::getOffsetY() const
 {
     return p_offset_y;
 }
 
-void setVisibility(Visibility visibility)
+void Layer::setVisibility(Visibility visibility)
 {
     p_visibility = visibility;
 }
 
-const Visibility getVisibility() const
+Layer::Visibility Layer::getVisibility() const
 {
     return p_visibility;
 }
 
-void setEncoding(Encoding encoding)
+void Layer::setEncoding(Encoding encoding)
 {
     p_encoding = encoding;
 }
 
-Encoding getEncoding() const
+Layer::Encoding Layer::getEncoding() const
 {
     return p_encoding;
 }
 
-void setOpacity(float opacity)
+void Layer::setOpacity(float opacity)
 {
     p_opacity = opacity;
 }
 
-float getOpacity() const
+float Layer::getOpacity() const
 {
     return p_opacity;
 }
 
-void setName(const std::string& name)
+void Layer::setName(const std::string& name)
 {
     p_name = name;
 }
 
-const std::string& getName() const
+const std::string& Layer::getName() const
 {
     return p_name;
 }
 
-void setType(const std::string& type)
+void Layer::setType(const std::string& type)
 {
     p_type = type;
 }
 
-const std::string& getType() const
+const std::string& Layer::getType() const
 {
     return p_type;
 }
 
-void setCompression(const std::string& compression)
+void Layer::setCompression(const std::string& compression)
 {
     p_compression = compression;
 }
 
-const std::string& getCompression() const
+const std::string& Layer::getCompression() const
 {
     return p_compression;
 }
 
-void setProperties(const std::unordered_map<std::string, std::string>& properties)
+void Layer::setProperties(const std::unordered_map<std::string, std::string>& properties)
 {
     p_properties = properties;
 }
 
-std::unordered_map<std::string, std::string>& getProperties()
+std::unordered_map<std::string, std::string>& Layer::getProperties()
 {
     return p_properties;
 }
 
-const std::unordered_map<std::string, std::string>& getProperties() const
+const std::unordered_map<std::string, std::string>& Layer::getProperties() const
 {
     return p_properties;
 }

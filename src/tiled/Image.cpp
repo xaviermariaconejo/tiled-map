@@ -2,14 +2,12 @@
 
 using namespace tiled;
 
-Image()
+Image::Image()
 {
-
 }
 
-~Image()
+Image::~Image()
 {
-
 }
 
 void Image::setId(int id)
@@ -47,7 +45,7 @@ void Image::setEncoding(Encoding encoding)
     p_encoding = encoding;
 }
 
-Encoding Image::getEncoding() const
+Image::Encoding Image::getEncoding() const
 {
     return p_encoding;
 }

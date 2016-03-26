@@ -31,7 +31,7 @@ public:
     int getOffsetY() const;
 
     void setVisibility(Visibility visibility);
-    const Visibility getVisibility() const;
+    Visibility getVisibility() const;
 
     void setEncoding(Encoding encoding);
     Encoding getEncoding() const;

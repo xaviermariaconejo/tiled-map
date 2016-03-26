@@ -7,9 +7,9 @@
 
 namespace tiled
 {
-class Image;
+class Image{ public: ~Image(){}};
 class ObjectLayer;
-class Animation;
+class Animation{public: ~Animation(){}};
 class Tile
 {
 public:
@@ -22,15 +22,15 @@ public:
     void setProbability(float probability);
     float getProbability() const;
 
-    void setImage(const Image* image);
+    void setImage(Image* image);
     Image* getImage();
     const Image* getImage() const;
 
-    void setAnimation(const Animation* animation);
-    Animation* geAnimation();
+    void setAnimation(Animation* animation);
+    Animation* getAnimation();
     const Animation* getAnimation() const;
 
-    void setTerrain(const TerrainCoords* terrain);
+    void setTerrain(TerrainCoords* terrain);
     TerrainCoords* getTerrain();
     const TerrainCoords* getTerrain() const;
 

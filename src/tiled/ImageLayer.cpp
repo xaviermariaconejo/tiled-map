@@ -6,22 +6,22 @@ ImageLayer::ImageLayer()
 {
 }
 
-ImageLayer::~ImageLayer() override
+ImageLayer::~ImageLayer()
 {
     delete p_image;
 }
 
-void setImage(const Image* image)
+void ImageLayer::setImage(Image* image)
 {
     p_image = image;
 }
 
-Image* getImage()
+Image* ImageLayer::getImage()
 {
     return p_image;
 }
 
-const Image* getImage() const
+const Image* ImageLayer::getImage() const
 {
     return p_image;
 }

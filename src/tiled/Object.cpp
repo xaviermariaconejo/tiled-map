@@ -10,115 +10,115 @@ Object::~Object()
 {
 }
 
-void setX(int x)
+void Object::setX(int x)
 {
     p_x = x;
 }
 
-int getX() const
+int Object::getX() const
 {
     return p_x;
 }
 
-void setY(int y)
+void Object::setY(int y)
 {
     p_y = y;
 }
 
-int getY() const
+int Object::getY() const
 {
     return p_y;
 }
 
-void setId(int id)
+void Object::setId(int id)
 {
     p_id = id;
 }
 
-int getId() const
+int Object::getId() const
 {
     return p_id;
 }
 
-void setGId(int g_id)
+void Object::setGId(int g_id)
 {
     p_g_id = g_id;
 }
 
-int getGId() const
+int Object::getGId() const
 {
     return p_g_id;
 }
 
-void setWidth(int width)
+void Object::setWidth(int width)
 {
     p_width = width;
 }
 
-int getWidth() const
+int Object::getWidth() const
 {
     return p_width;
 }
 
-void setHeight(int height)
+void Object::setHeight(int height)
 {
     p_height = height;
 }
 
-int getHeight() const
+int Object::getHeight() const
 {
     return p_height;
 }
 
-void setVisibility(Visibility visibility)
+void Object::setVisibility(Visibility visibility)
 {
     p_visibility = visibility;
 }
 
-const Visibility getVisibility() const
+const Object::Visibility Object::getVisibility() const
 {
     return p_visibility;
 }
 
-void setRotation(float rotation)
+void Object::setRotation(float rotation)
 {
     p_rotation = rotation;
 }
 
-float getRotation() const
+float Object::getRotation() const
 {
     return p_rotation;
 }
 
-void setName(const std::string& name)
+void Object::setName(const std::string& name)
 {
     p_name = name;
 }
 
-const std::string& getName() const
+const std::string& Object::getName() const
 {
     return p_name;
 }
 
-void setType(const std::string& type)
+void Object::setType(const std::string& type)
 {
     p_type = type;
 }
 
-const std::string& getType() const
+const std::string& Object::getType() const
 {
     return p_type;
 }
 
-void setProperties(const std::unordered_map<std::string, std::string>& properties)
+void Object::setProperties(const std::unordered_map<std::string, std::string>& properties)
 {
     p_properties = properties;
 }
-std::unordered_map<std::string, std::string>& getProperties()
+std::unordered_map<std::string, std::string>& Object::getProperties()
 {
     return p_properties;
 }
-const std::unordered_map<std::string, std::string>& getProperties() const
+const std::unordered_map<std::string, std::string>& Object::getProperties() const
 {
     return p_properties;
 }

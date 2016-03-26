@@ -4,14 +4,14 @@
 
 namespace tiled
 {
-class Image;
+class Image{public: ~Image(){}};
 class ImageLayer : public Layer
 {
 public:
     ImageLayer();
     ~ImageLayer() override;
 
-    void setImage(const Image* image);
+    void setImage(Image* image);
     Image* getImage();
     const Image* getImage() const;
 

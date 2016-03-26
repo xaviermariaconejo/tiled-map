@@ -6,41 +6,41 @@ ObjectLayer::ObjectLayer()
 {
 }
 
-ObjectLayer::~ObjectLayer() override;
+ObjectLayer::~ObjectLayer()
 {
 }
 
-void setDrawOrder(DrawOrder draw_order)
+void ObjectLayer::setDrawOrder(DrawOrder draw_order)
 {
     p_draw_order = draw_order;
 }
 
-DrawOrder getDrawOrder() const
+ObjectLayer::DrawOrder ObjectLayer::getDrawOrder() const
 {
     return p_draw_order;
 }
 
-void setColor(const Color& color)
+void ObjectLayer::setColor(const Color& color)
 {
     p_color = color;
 }
 
-const Color& getColor() const
+const Color& ObjectLayer::getColor() const
 {
-    return color;
+    return p_color;
 }
 
-void setObjects(const std::vector<Object*>& Objects)
+void ObjectLayer::setObjects(const std::vector<Object*>& Objects)
 {
     p_objects = Objects;
 }
 
-std::vector<Object*>& getObjects()
+std::vector<Object*>& ObjectLayer::getObjects()
 {
     return p_objects;
 }
 
-const std::vector<Object*>& getObjects() const
+const std::vector<Object*>& ObjectLayer::getObjects() const
 {
     return p_objects;
 }

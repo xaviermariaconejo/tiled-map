@@ -7,7 +7,7 @@
 namespace tiled
 {
 class Tile;
-class Image;
+class Image{public: ~Image(){}};
 class Terrain;
 class Tileset
 {
@@ -48,7 +48,7 @@ public:
     void setFileName(const std::string& file_name);
     const std::string& getFileName() const;
 
-    void setImage(const Image* image);
+    void setImage(Image* image);
     Image* getImage();
     const Image* getImage() const;
 
@@ -73,7 +73,9 @@ private:
         p_margin,
         p_tile_count,
         p_first_g_id,
-        p_columns;
+        p_columns,
+        p_tile_offset_x,
+        p_tile_offset_y;
     std::string p_name, p_file_name;
     Image* p_image;
     std::vector<Tile*> p_tiles;
