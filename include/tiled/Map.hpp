@@ -61,33 +61,27 @@ public:
     void setNextObjectId(int next_object_id);
     int getNextObjectId() const;
 
-    void setLayers(std::vector<Layer*>&& layers);
     void setLayers(const std::vector<Layer*>& layers);
     std::vector<Layer*>& getLayers();
     const std::vector<Layer*>& getLayers() const;
 
-    void setTileLayers(std::vector<TileLayer*>&& Tilelayers);
-    void setTileLayers(const std::vector<TileLayer*>& Tilelayers);
+    void setTileLayers(const std::vector<TileLayer*>& tilelayers);
     std::vector<TileLayer*>& getTileLayers();
     const std::vector<TileLayer*>& getTileLayers() const;
 
-    void setImageLayers(std::vector<ImageLayer*>&& Imagelayers);
-    void setImageLayers(const std::vector<ImageLayer*>& Imagelayers);
+    void setImageLayers(const std::vector<ImageLayer*>& tmagelayers);
     std::vector<ImageLayer*>& getImageLayers();
     const std::vector<ImageLayer*>& getImageLayers() const;
 
-    void setObjectLayers(std::vector<ObjectLayer*>&& Objectlayers);
-    void setObjectLayers(const std::vector<ObjectLayer*>& Objectlayers);
+    void setObjectLayers(const std::vector<ObjectLayer*>& objectlayers);
     std::vector<ObjectLayer*>& getObjectLayers();
     const std::vector<ObjectLayer*>& getObjectLayers() const;
 
-    void setTilesets(std::vector<Tileset>&& tileset);
-    void setTilesets(const std::vector<Tileset>& tileset);
-    std::vector<Tileset>& getTilesets();
-    const std::vector<Tileset>& getTilesets() const;
+    void setTilesets(const std::vector<Tileset*>& tileset);
+    std::vector<Tileset*>& getTilesets();
+    const std::vector<Tileset*>& getTilesets() const;
 
-    void setProperties(std::unordered_map<std::string, std::string>&& tileset);
-    void setProperties(const std::unordered_map<std::string, std::string>& tileset);
+    void setProperties(const std::unordered_map<std::string, std::string>& properties);
     std::unordered_map<std::string, std::string>& getProperties();
     const std::unordered_map<std::string, std::string>& getProperties() const;
 
