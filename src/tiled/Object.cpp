@@ -2,8 +2,7 @@
 
 using namespace tiled;
 
-Object::Object(Shape shape):
-p_shape(shape)
+Object::Object()
 {}
 
 Object::~Object()

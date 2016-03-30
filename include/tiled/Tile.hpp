@@ -4,12 +4,12 @@
 #include <unordered_map>
 #include "TerrainCoords.hpp"
 #include "WithProperties.hpp"
+#include "Frame.hpp"
 
 namespace tiled
 {
 class Tileset;
 class Object;
-class Frame;
 class Tile : public priv::WithProperties
 {
 public:

@@ -34,3 +34,5 @@ private:
     std::string p_string_value;
 };
 }
+
+#endif
