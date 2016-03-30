@@ -1,14 +1,20 @@
+#ifndef TILED_EXTENSIONS_LUA_HPP
+#define TILED_EXTENSIONS_LUA_HPP
+#include "tiled.hpp"
+
+extern "C"
+{
+    #include "../lua/lua.h"
+    #include "../lua/lualib.h"
+    #include "../lua/lauxlib.h"
+}
+
 namespace tiled
 {
 namespace lua
 {
-void load(Map& map, lua_stack L)
-{
-    std::string version = lua_pop_string(L);
-    map.setVersion(version);
-    ...
-}
-
-void to_string(const Map& map);
+void load(Map& map, lua_State* L);
 } /* lua */
 } /* tiled */
+
+#endif /* ifndef TILED_EXTENSIONS_LUA_HPP */

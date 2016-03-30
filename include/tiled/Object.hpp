@@ -2,13 +2,19 @@
 #define TILED_OBJECT_HPP
 #include <string>
 #include <unordered_map>
+#include <vector>
+#include "WithProperties.hpp"
+#include "Point.hpp"
+
 
 namespace tiled
 {
-class Object
+class Object : public priv::WithProperties
 {
 public:
     enum class Shape { RECTANGLE, ELLIPSE, POLYGON, POLYLINE, COUNT };
+    Object();
+    ~Object();
 
     void setX(int x);
     int getX() const;
@@ -37,16 +43,12 @@ public:
     void setName(const std::string& name);
     const std::string& getName() const;
 
+    void setPoints(const std::vector<Point>& points);
+    std::vector<Point>& getPoints();
+    const std::vector<Point>& getPoints() const;
+
     void setType(const std::string& type);
     const std::string& getType() const;
-
-    void setProperties(const std::unordered_map<std::string, std::string>& properties);
-    std::unordered_map<std::string, std::string>& getProperties();
-    const std::unordered_map<std::string, std::string>& getProperties() const;
-
-
-protected:
-    Shape p_shape;
 
 private:
     int p_width,
@@ -56,8 +58,9 @@ private:
         p_g_id;
     bool p_visibility;
     float p_rotation;
+    Shape p_shape;
+    std::vector<Point> p_points;
     std::string p_name, p_type;
-    std::unordered_map<std::string, std::string> p_properties;
 };
 } /* tiled */
 

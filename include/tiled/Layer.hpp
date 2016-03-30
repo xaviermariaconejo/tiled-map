@@ -2,13 +2,15 @@
 #define TILED_LAYER_HPP
 #include <string>
 #include <unordered_map>
+#include "WithProperties.hpp"
 
 namespace tiled
 {
-class Layer
+class Layer : public priv::WithProperties
 {
 public:
     enum class LayerType { TILE_LAYER, IMAGE_LAYER, OBJECT_LAYER, COUNT };
+    ~Layer();
 
     void setWidth(int width);
     int getWidth() const;
@@ -40,11 +42,6 @@ public:
     void setName(const std::string& name);
     const std::string& getName() const;
 
-    void setProperties(const std::unordered_map<std::string, std::string>& properties);
-    std::unordered_map<std::string, std::string>& getProperties();
-    const std::unordered_map<std::string, std::string>& getProperties() const;
-
-
 protected:
     LayerType p_type;
 
@@ -58,7 +55,6 @@ private:
     bool p_visibility;
     float p_opacity;
     std::string p_name;
-    std::unordered_map<std::string, std::string> p_properties;
 };
 } /* tiled */
 

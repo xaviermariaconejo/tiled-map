@@ -4,6 +4,7 @@
 #include <vector>
 #include <unordered_map>
 #include "Color.hpp"
+#include "WithProperties.hpp"
 
 namespace tiled
 {
@@ -12,7 +13,7 @@ class TileLayer;
 class ImageLayer;
 class ObjectLayer;
 class Tileset;
-class Map
+class Map : public priv::WithProperties
 {
 public:
     enum class Orientation { ORTHOGONAL, ISOMETRIC, STAGGERED, HEXAGONAL, COUNT };
@@ -81,12 +82,6 @@ public:
     std::vector<Tileset*>& getTilesets();
     const std::vector<Tileset*>& getTilesets() const;
 
-    void setProperties(const std::unordered_map<std::string, std::string>& properties);
-    std::unordered_map<std::string, std::string>& getProperties();
-    const std::unordered_map<std::string, std::string>& getProperties() const;
-
-
-
 private:
     int p_width,
         p_height,
@@ -105,7 +100,6 @@ private:
     std::vector<ImageLayer*> p_image_layers;
     std::vector<ObjectLayer*> p_object_layers;
     std::vector<Tileset*> p_tileset;
-    std::unordered_map<std::string, std::string> p_properties;
 };
 } /* tiled */
 

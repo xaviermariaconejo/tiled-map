@@ -10,5 +10,11 @@
 #include "Terrain.hpp"
 #include "Tile.hpp"
 #include "TileLayer.hpp"
-#include "TileSet.hpp"
+#include "Tileset.hpp"
+#include "Rectangle.hpp"
+#include "Ellipse.hpp"
+#include "Polygon.hpp"
+#include "Polyline.hpp"
+#include "Value.hpp"
+#include "Properties.hpp"
 #endif /* ifndef TILED_HPP */

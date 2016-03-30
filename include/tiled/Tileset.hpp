@@ -3,13 +3,14 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
+#include "WithProperties.hpp"
 
 namespace tiled
 {
 class Tile;
 class Image;
 class Terrain;
-class Tileset
+class Tileset : public priv::WithProperties
 {
 public:
     Tileset();
@@ -60,12 +61,6 @@ public:
     std::vector<Terrain*>& getTerrains();
     const std::vector<Terrain*>& getTerrains() const;
 
-    void setProperties(const std::unordered_map<std::string, std::string>& properties);
-    std::unordered_map<std::string, std::string>& getProperties();
-    const std::unordered_map<std::string, std::string>& getProperties() const;
-
-
-
 private:
     int p_tile_width,
         p_tile_height,
@@ -80,7 +75,6 @@ private:
     Image* p_image;
     std::vector<Tile*> p_tiles;
     std::vector<Terrain*> p_terrains;
-    std::unordered_map<std::string, std::string> p_properties;
 };
 } /* tiled */
 

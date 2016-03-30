@@ -3,14 +3,10 @@
 using namespace tiled;
 
 Image::Image()
-{
-
-}
+{}
 
 Image::~Image()
-{
-
-}
+{}
 
 void Image::setWidth(int width)
 {

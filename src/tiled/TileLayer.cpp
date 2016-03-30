@@ -8,6 +8,4 @@ TileLayer::TileLayer()
 }
 
 TileLayer::~TileLayer()
-{
-
-}
+{}

@@ -1,5 +1,6 @@
 #include "Terrain.hpp"
 #include "Tile.hpp"
+#include "Properties.hpp"
 
 using namespace tiled;
 
@@ -37,19 +38,4 @@ Tile* Terrain::getTile()
 const Tile* Terrain::getTile() const
 {
     return p_tile;
-}
-
-void Terrain::setProperties(const std::unordered_map<std::string, std::string>& properties)
-{
-    p_properties = properties;
-}
-
-std::unordered_map<std::string, std::string>& Terrain::getProperties()
-{
-    return p_properties;
-}
-
-const std::unordered_map<std::string, std::string>& Terrain::getProperties() const
-{
-    return p_properties;
 }

@@ -2,6 +2,7 @@
 #include "Tile.hpp"
 #include "Terrain.hpp"
 #include "Image.hpp"
+#include "Properties.hpp"
 
 using namespace tiled;
 
@@ -17,7 +18,7 @@ Tileset::~Tileset()
     {
         delete tile;
     }
-    for (Terrain* terrain : p_terrains)
+    for(Terrain* terrain : p_terrains)
     {
         delete terrain;
     }
@@ -176,19 +177,4 @@ std::vector<Terrain*>& Tileset::getTerrains()
 const std::vector<Terrain*>& Tileset::getTerrains() const
 {
     return p_terrains;
-}
-
-void Tileset::setProperties(const std::unordered_map<std::string, std::string>& properties)
-{
-    p_properties = properties;
-}
-
-std::unordered_map<std::string, std::string>& Tileset::getProperties()
-{
-    return p_properties;
-}
-
-const std::unordered_map<std::string, std::string>& Tileset::getProperties() const
-{
-    return p_properties;
 }

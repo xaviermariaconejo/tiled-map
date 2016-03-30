@@ -1,6 +1,7 @@
 #include "Tile.hpp"
 #include "Object.hpp"
 #include "Frame.hpp"
+#include "Tileset.hpp"
 
 using namespace tiled;
 
@@ -17,10 +18,6 @@ Tile::~Tile()
     {
         delete object;
     }
-    for(Frame* frame : p_animation)
-    {
-        delete frame;
-    }
 }
 
 void Tile::setId(int id)
@@ -35,7 +32,7 @@ int Tile::getId() const
 
 int Tile::getGId() const
 {
-    return p_id;/////////////////////////////////
+    return p_parent->getGId() + p_id;
 }
 
 void Tile::setProbability(float probability)
@@ -93,32 +90,17 @@ const std::vector<Object*>& Tile::getObjects() const
     return p_objects;
 }
 
-void Tile::setAnimation(const std::vector<Frame*>& animation)
+void Tile::setAnimation(const std::vector<Frame>& animation)
 {
     p_animation = animation;
 }
 
-std::vector<Frame*>& Tile::getAnimation()
+std::vector<Frame>& Tile::getAnimation()
 {
     return p_animation;
 }
 
-const std::vector<Frame*>& Tile::getAnimation() const
+const std::vector<Frame>& Tile::getAnimation() const
 {
     return p_animation;
-}
-
-void Tile::setProperties(const std::unordered_map<std::string, std::string>& properties)
-{
-    p_properties = properties;
-}
-
-std::unordered_map<std::string, std::string>& Tile::getProperties()
-{
-    return p_properties;
-}
-
-const std::unordered_map<std::string, std::string>& Tile::getProperties() const
-{
-    return p_properties;
 }

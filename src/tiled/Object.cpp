@@ -2,6 +2,13 @@
 
 using namespace tiled;
 
+Object::Object(Shape shape):
+p_shape(shape)
+{}
+
+Object::~Object()
+{}
+
 void Object::setX(int x)
 {
     p_x = x;
@@ -92,6 +99,21 @@ const std::string& Object::getName() const
     return p_name;
 }
 
+void Object::setPoints(const std::vector<Point>& points)
+{
+    p_points = points;
+}
+
+std::vector<Point>& Object::getPoints()
+{
+    return p_points;
+}
+
+const std::vector<Point>& Object::getPoints() const
+{
+    return p_points;
+}
+
 void Object::setType(const std::string& type)
 {
     p_type = type;
@@ -100,18 +122,4 @@ void Object::setType(const std::string& type)
 const std::string& Object::getType() const
 {
     return p_type;
-}
-
-void Object::setProperties(const std::unordered_map<std::string, std::string>& properties)
-{
-    p_properties = properties;
-}
-
-std::unordered_map<std::string, std::string>& Object::getProperties()
-{
-    return p_properties;
-}
-const std::unordered_map<std::string, std::string>& Object::getProperties() const
-{
-    return p_properties;
 }

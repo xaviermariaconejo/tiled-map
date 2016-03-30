@@ -3,21 +3,14 @@
 #include <vector>
 #include <unordered_map>
 #include "TerrainCoords.hpp"
-
-
-/* TODO Hay un vector<Object*> que he copiado
- * del parser, la docu dice que es un ObjectGroup.
- * Y en los ejemplos de mapas no sale nada de eso y
- * he intentado hacer que aparezca haciendo un mapa y nada
- */
-
+#include "WithProperties.hpp"
 
 namespace tiled
 {
 class Tileset;
 class Object;
 class Frame;
-class Tile
+class Tile : public priv::WithProperties
 {
 public:
     Tile();
@@ -35,7 +28,7 @@ public:
     TerrainCoords& getTerrain();
     const TerrainCoords& getTerrain() const;
 
-    void setParent(Tileset* parnet);
+    void setParent(Tileset* parent);
     Tileset* getParent();
     const Tileset* getParent() const;
 
@@ -43,15 +36,9 @@ public:
     std::vector<Object*>& getObjects();
     const std::vector<Object*>& getObjects() const;
 
-    void setAnimation(const std::vector<Frame*>& animation);
-    std::vector<Frame*>& getAnimation();
-    const std::vector<Frame*>& getAnimation() const;
-
-    void setProperties(const std::unordered_map<std::string, std::string>& properties);
-    std::unordered_map<std::string, std::string>& getProperties();
-    const std::unordered_map<std::string, std::string>& getProperties() const;
-
-
+    void setAnimation(const std::vector<Frame>& animation);
+    std::vector<Frame>& getAnimation();
+    const std::vector<Frame>& getAnimation() const;
 
 private:
     int p_id;
@@ -59,8 +46,7 @@ private:
     TerrainCoords p_terrain;
     Tileset* p_parent;
     std::vector<Object*> p_objects;
-    std::vector<Frame*> p_animation;
-    std::unordered_map<std::string, std::string> p_properties;
+    std::vector<Frame> p_animation;
 };
 } /* tiled */
 

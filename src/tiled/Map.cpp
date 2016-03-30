@@ -4,6 +4,7 @@
 #include "ImageLayer.hpp"
 #include "ObjectLayer.hpp"
 #include "Tileset.hpp"
+#include "Properties.hpp"
 
 using namespace tiled;
 
@@ -13,9 +14,7 @@ p_render_order(RenderOrder::RIGHT_DOWN),
 p_stagger_axis(StaggerAxis::NONE),
 p_stagger_index(StaggerIndex::NONE),
 p_background_color(Color{128, 128, 128, 255})
-{
-
-}
+{}
 
 Map::~Map()
 {
@@ -245,19 +244,4 @@ std::vector<Tileset*>& Map::getTilesets()
 const std::vector<Tileset*>& Map::getTilesets() const
 {
     return p_tileset;
-}
-
-void Map::setProperties(const std::unordered_map<std::string, std::string>& properties)
-{
-    p_properties = properties;
-}
-
-std::unordered_map<std::string, std::string>& Map::getProperties()
-{
-    return p_properties;
-}
-
-const std::unordered_map<std::string, std::string>& Map::getProperties() const
-{
-    return p_properties;
 }

@@ -2,11 +2,12 @@
 #define TILED_TERRAIN_HPP
 #include <string>
 #include <unordered_map>
+#include "WithProperties.hpp"
 
 namespace tiled
 {
 class Tile;
-class Terrain
+class Terrain : public priv::WithProperties
 {
 public:
     Terrain();
@@ -19,16 +20,9 @@ public:
     Tile* getTile();
     const Tile* getTile() const;
 
-    void setProperties(const std::unordered_map<std::string, std::string>& tileset);
-    std::unordered_map<std::string, std::string>& getProperties();
-    const std::unordered_map<std::string, std::string>& getProperties() const;
-
-
-
 private:
     std::string p_name;
     Tile* p_tile;
-    std::unordered_map<std::string, std::string> p_properties;
 };
 } /* tiled */
 

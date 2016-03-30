@@ -12,6 +12,11 @@ class Value
 public:
     enum class Type { NONE, BOOL, INT, FLOAT, STRING };
 
+    Value();
+    Value(bool value);
+    Value(int value);
+    Value(float value);
+    Value(const std::string& value);
     virtual ~Value();
     virtual Type getType() const;
     virtual bool getBool() const;
@@ -20,50 +25,12 @@ public:
     virtual const std::string& getString() const;
 
     static const char* typeToString(Type type);
-};
-
-class BoolValue : public Value
-{
-public:
-    BoolValue(bool value);
-    virtual Type getType() const override;
-    virtual bool getBool() const override;
 
 private:
-    bool p_value;
-};
-
-class IntValue : public Value
-{
-public:
-    IntValue(int value);
-    virtual Type getType() const override;
-    virtual int getInt() const override;
-
-private:
-    int p_value;
-};
-
-class FloatValue : public Value
-{
-public:
-    FloatValue(float value);
-    virtual Type getType() const override;
-    virtual float getFloat() const override;
-
-private:
-    float p_value;
-};
-
-class StringValue : public Value
-{
-public:
-    StringValue(const std::string& value);
-    virtual Type getType() const override;
-    virtual const std::string& getString() const override;
-
-private:
-    std::string p_value;
+    Type p_type;
+    bool p_bool_value;
+    int p_int_value;
+    float p_float_value;
+    std::string p_string_value;
 };
 }
-#endif /* ifndef TILED_VALUE_HPP */

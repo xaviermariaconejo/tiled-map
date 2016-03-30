@@ -1,6 +1,10 @@
 #include "Layer.hpp"
+#include "Properties.hpp"
 
 using namespace tiled;
+
+Layer::~Layer()
+{}
 
 void Layer::setWidth(int width)
 {
@@ -100,19 +104,4 @@ void Layer::setName(const std::string& name)
 const std::string& Layer::getName() const
 {
     return p_name;
-}
-
-void Layer::setProperties(const std::unordered_map<std::string, std::string>& properties)
-{
-    p_properties = properties;
-}
-
-std::unordered_map<std::string, std::string>& Layer::getProperties()
-{
-    return p_properties;
-}
-
-const std::unordered_map<std::string, std::string>& Layer::getProperties() const
-{
-    return p_properties;
 }

@@ -9,6 +9,9 @@ class TileLayer : public Layer
 public:
     TileLayer();
     ~TileLayer();
+
+private:
+//TODO encode
 };
 }
 #endif
