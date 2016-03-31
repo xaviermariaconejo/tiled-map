@@ -35,7 +35,6 @@ Value getValue(lua_State* L, const char* key)
     return result;
 }
 
-
 Color getColor(const std::string& s_color)
 {
     Color c_color;
@@ -51,11 +50,14 @@ void getProperties(lua_State* L, Properties& properties)
 {
     lua_pushstring(L, "properties");
     lua_gettable(L, -2);
-    lua_pushnil(L);
-    while(lua_next(L, -2) != 0)
+    if(lua_istable(L, -1))
     {
-        properties.set(getValue(L, -2).getString(), getValue(L, -1));
-        lua_pop(L, 1);
+        lua_pushnil(L);
+        while(lua_next(L, -2) != 0)
+        {
+            properties.set(getValue(L, -2).getString(), getValue(L, -1));
+            lua_pop(L, 1);
+        }
     }
     lua_pop(L, 1);
 }
@@ -171,17 +173,20 @@ Object* getObject(lua_State* L)
 
     lua_pushstring(L, value.getString().c_str());
     lua_gettable(L, -2);
-    lua_pushnil(L);
-    //WARNING
-    while (lua_next(L, -2) != 0)
+    if (lua_istable(L, -1))
     {
-        float x = getValue(L, "x").getFloat();
-        float y = getValue(L, "y").getFloat();
-        if (value.getType() == Value::Type::STRING)
+        lua_pushnil(L);
+        while (lua_next(L, -2) != 0)
         {
-            object->getPoints().push_back(Point{x, y});
+            float x = getValue(L, "x").getFloat();
+            float y = getValue(L, "y").getFloat();
+            if (value.getType() == Value::Type::STRING)
+            {
+                object->getPoints().push_back(Point{x, y});
+            }
+
+            lua_pop(L, 1);
         }
-        lua_pop(L, 1);
     }
     lua_pop(L, 1);
 
@@ -200,15 +205,18 @@ void getObjects(lua_State* L, std::vector<Object*>& objects)
 {
     lua_pushstring(L, "objects");
     lua_gettable(L, -2);
-    lua_pushnil(L);
-    while(lua_next(L, -2) != 0)
+    if(lua_istable(L, -1))
     {
-        if(lua_istable(L, -1))
+        lua_pushnil(L);
+        while(lua_next(L, -2) != 0)
         {
-            Object* object = getObject(L);
-            objects.push_back(object);
+            if(lua_istable(L, -1))
+            {
+                Object* object = getObject(L);
+                objects.push_back(object);
+            }
+            lua_pop(L, 1);
         }
-        lua_pop(L, 1);
     }
     lua_pop(L, 1);
 }
@@ -334,35 +342,38 @@ void getLayers(lua_State* L, Map& map)
 {
     lua_pushstring(L, "layers");
     lua_gettable(L, -2);
-    lua_pushnil(L);
-    while(lua_next(L, -2) != 0)
+    if(lua_istable(L, -1))
     {
-        if(lua_istable(L, -1))
+        lua_pushnil(L);
+        while(lua_next(L, -2) != 0)
         {
-            Value value = getValue(L, "type");
-            if (value.getType() == Value::Type::STRING)
+            if(lua_istable(L, -1))
             {
-                if (value.getString() == "tilelayer")
+                Value value = getValue(L, "type");
+                if (value.getType() == Value::Type::STRING)
                 {
-                    TileLayer* layer = getTileLayer(L);
-                    map.getLayers().push_back(layer);
-                    map.getTileLayers().push_back(layer);
-                }
-                else if (value.getString() == "imagelayer")
-                {
-                    ImageLayer* layer = getImageLayer(L);
-                    map.getLayers().push_back(layer);
-                    map.getImageLayers().push_back(layer);
-                }
-                else if (value.getString() == "objectgroup")
-                {
-                    ObjectLayer* layer = getObjectLayer(L);
-                    map.getLayers().push_back(layer);
-                    map.getObjectLayers().push_back(layer);
+                    if (value.getString() == "tilelayer")
+                    {
+                        TileLayer* layer = getTileLayer(L);
+                        map.getLayers().push_back(layer);
+                        map.getTileLayers().push_back(layer);
+                    }
+                    else if (value.getString() == "imagelayer")
+                    {
+                        ImageLayer* layer = getImageLayer(L);
+                        map.getLayers().push_back(layer);
+                        map.getImageLayers().push_back(layer);
+                    }
+                    else if (value.getString() == "objectgroup")
+                    {
+                        ObjectLayer* layer = getObjectLayer(L);
+                        map.getLayers().push_back(layer);
+                        map.getObjectLayers().push_back(layer);
+                    }
                 }
             }
+            lua_pop(L, 1);
         }
-        lua_pop(L, 1);
     }
     lua_pop(L, 1);
 }
@@ -396,15 +407,18 @@ void getTerrains(lua_State* L, const std::vector<Tile*>& tiles, std::vector<Terr
 {
     lua_pushstring(L, "terrains");
     lua_gettable(L, -2);
-    lua_pushnil(L);
-    while(lua_next(L, -2) != 0)
+    if(lua_istable(L, -1))
     {
-        if(lua_istable(L, -1))
+        lua_pushnil(L);
+        while(lua_next(L, -2) != 0)
         {
-            Terrain* terrain = getTerrain(L, tiles);
-            terrains.push_back(terrain);
+            if(lua_istable(L, -1))
+            {
+                Terrain* terrain = getTerrain(L, tiles);
+                terrains.push_back(terrain);
+            }
+            lua_pop(L, 1);
         }
-        lua_pop(L, 1);
     }
     lua_pop(L, 1);
 }
@@ -414,16 +428,17 @@ void getAnimation(lua_State* L, std::vector<Frame>& animation)
 {
     lua_pushstring(L, "animation");
     lua_gettable(L, -2);
-    lua_pushnil(L);
-    while (lua_next(L, -2) != 0)
+    if(lua_istable(L, -1))
     {
-        std::string tileid = getValue(L, "tileid").getString();
-        std::string duration = getValue(L, "y").getString();
-        Frame frame;
-        frame.tile_id = std::stoi(tileid);
-        frame.duration = std::stoi(duration);
-        animation.push_back(frame);
-        lua_pop(L, 1);
+        lua_pushnil(L);
+        while (lua_next(L, -2) != 0)
+        {
+            Frame frame;
+            frame.tile_id = getValue(L, "tileid").getFloat();
+            frame.duration = getValue(L, "duration").getFloat();
+            animation.push_back(frame);
+            lua_pop(L, 1);
+        }
     }
     lua_pop(L, 1);
 }
@@ -449,34 +464,37 @@ Tile* getTile(lua_State* L, Tileset* parent)
 
     lua_pushstring(L, "terrain");
     lua_gettable(L, -2);
-    lua_pushnil(L);
-    int cont = 1;
-    TerrainCoords tcoords;
-    while(lua_next(L, -2) != 0)
+    if(lua_istable(L, -1))
     {
-        if(lua_isnumber(L, -1))
+        lua_pushnil(L);
+        int cont = 1;
+        TerrainCoords tcoords;
+        while(lua_next(L, -2) != 0)
         {
-            if (cont == 1)
+            if(lua_isnumber(L, -1))
             {
-                tcoords.top_left = lua_tonumber(L, -1);
+                if (cont == 1)
+                {
+                    tcoords.top_left = lua_tonumber(L, -1);
+                }
+                else if (cont == 2)
+                {
+                    tcoords.top_right = lua_tonumber(L, -1);
+                }
+                else if (cont == 3)
+                {
+                    tcoords.bottom_left = lua_tonumber(L, -1);
+                }
+                else if (cont == 4)
+                {
+                    tcoords.bottom_right = lua_tonumber(L, -1);
+                }
             }
-            else if (cont == 2)
-            {
-                tcoords.top_right = lua_tonumber(L, -1);
-            }
-            else if (cont == 3)
-            {
-                tcoords.bottom_left = lua_tonumber(L, -1);
-            }
-            else if (cont == 4)
-            {
-                tcoords.bottom_right = lua_tonumber(L, -1);
-            }
+            ++cont;
+            lua_pop(L, 1);
         }
-        ++cont;
-        lua_pop(L, 1);
+        tile->setTerrain(tcoords);
     }
-    tile->setTerrain(tcoords);
     lua_pop(L, 1);
 
     getObjects(L, tile->getObjects());
@@ -493,15 +511,18 @@ void getTiles(lua_State* L, std::vector<Tile*>& tiles, Tileset* parent)
 {
     lua_pushstring(L, "tiles");
     lua_gettable(L, -2);
-    lua_pushnil(L);
-    while(lua_next(L, -2) != 0)
+    if(lua_istable(L, -1))
     {
-        if(lua_istable(L, -1))
+        lua_pushnil(L);
+        while(lua_next(L, -2) != 0)
         {
-            Tile* tile = getTile(L, parent);
-            tiles.push_back(tile);
+            if(lua_istable(L, -1))
+            {
+                Tile* tile = getTile(L, parent);
+                tiles.push_back(tile);
+            }
+            lua_pop(L, 1);
         }
-        lua_pop(L, 1);
     }
     lua_pop(L, 1);
 }
@@ -600,27 +621,30 @@ void getTilesets(lua_State* L, std::vector<Tileset*>& tilesets)
 {
     lua_pushstring(L, "tilesets");
     lua_gettable(L, -2);
-    lua_pushnil(L);
-    while(lua_next(L, -2) != 0)
+    if(lua_istable(L, -1))
     {
-        if(lua_istable(L, -1))
+        lua_pushnil(L);
+        while(lua_next(L, -2) != 0)
         {
-            Tileset* tileset = getTileset(L);
-            tilesets.push_back(tileset);
+            if(lua_istable(L, -1))
+            {
+                Tileset* tileset = getTileset(L);
+                tilesets.push_back(tileset);
+            }
+            lua_pop(L, 1);
         }
-        lua_pop(L, 1);
     }
     lua_pop(L, 1);
 }
 
 
-void lua::load(Map& map, lua_State* L)
+void load(Map& map, lua_State* L)
 {
     Value value;
     value = getValue(L, "version");
-    if (value.getType() == Value::Type::STRING)
+    if (value.getType() == Value::Type::FLOAT)
     {
-        map.setVersion(value.getString());
+        map.setVersion(std::to_string(value.getFloat()));
     }
 
 
@@ -680,7 +704,7 @@ void lua::load(Map& map, lua_State* L)
 
 
     value = getValue(L, "width");
-    if (value.getType() == Value::Type::STRING)
+    if (value.getType() == Value::Type::FLOAT)
     {
         map.setWidth(value.getFloat());
     }
@@ -752,12 +776,9 @@ void lua::load(Map& map, lua_State* L)
         map.setNextObjectId(value.getFloat());
     }
 
-
     getLayers(L, map);
 
-
     getTilesets(L, map.getTilesets());
-
 
     getProperties(L, map.getProperties());
 }
