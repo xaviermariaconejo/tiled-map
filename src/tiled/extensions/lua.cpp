@@ -288,7 +288,52 @@ TileLayer* getTileLayer(lua_State* L)
 
     getLayer(L, layer);
 
-    // TODO: data;
+    Value value;
+    value = getValue(L, "encoding");
+    if (value.getType() == Value::Type::STRING)
+    {
+        TileLayer::Encoding encoding = TileLayer::Encoding::LUA;
+        if(value.getString() == "base64")
+        {
+            encoding = TileLayer::Encoding::BASE64;
+        }
+        layer->setEncoding(encoding);
+    }
+
+    value = getValue(L, "compression");
+    if (value.getType() == Value::Type::STRING)
+    {
+        TileLayer::Compression compression = TileLayer::Compression::NONE;
+        if(value.getString() == "zlib")
+        {
+            compression = TileLayer::Compression::ZLIB;
+        }
+        else if (value.getString() == "gzib")
+        {
+            compression = TileLayer::Compression::GZIB;
+        }
+        layer->setCompression(compression);
+    }
+
+    lua_pushstring(L, "data");
+    lua_gettable(L, -2);
+    if(lua_istable(L, -1))
+    {
+        std::vector<int> tile_map;
+        lua_pushnil(L);
+        while(lua_next(L, -2) != 0)
+        {
+            tile_map.push_back(lua_tonumber(L, -1));
+            lua_pop(L, 1);
+        }
+        layer->setTileMap(tile_map);
+    }
+    else if(lua_isstring(L, -1))
+    {
+        std::string s(lua_tostring(L, -1));
+        layer->setData(s);
+    }
+    lua_pop(L, 1);
 
     return layer;
 }
@@ -379,7 +424,7 @@ void getLayers(lua_State* L, Map& map)
 }
 
 
-Terrain* getTerrain(lua_State* L, const std::vector<Tile*>& tiles)
+Terrain* getTerrain(lua_State* L)
 {
     Terrain* terrain = new Terrain();
     Value value;
@@ -393,8 +438,7 @@ Terrain* getTerrain(lua_State* L, const std::vector<Tile*>& tiles)
     value = getValue(L, "tile");
     if (value.getType() == Value::Type::FLOAT)
     {
-        Tile* tile = tiles[(int)value.getFloat()];
-        terrain->setTile(tile);
+        terrain->setTile(value.getFloat());
     }
 
     getProperties(L, terrain->getProperties());
@@ -403,7 +447,7 @@ Terrain* getTerrain(lua_State* L, const std::vector<Tile*>& tiles)
 }
 
 
-void getTerrains(lua_State* L, const std::vector<Tile*>& tiles, std::vector<Terrain*>& terrains)
+void getTerrains(lua_State* L, std::vector<Terrain*>& terrains)
 {
     lua_pushstring(L, "terrains");
     lua_gettable(L, -2);
@@ -414,7 +458,7 @@ void getTerrains(lua_State* L, const std::vector<Tile*>& tiles, std::vector<Terr
         {
             if(lua_istable(L, -1))
             {
-                Terrain* terrain = getTerrain(L, tiles);
+                Terrain* terrain = getTerrain(L);
                 terrains.push_back(terrain);
             }
             lua_pop(L, 1);
@@ -609,7 +653,7 @@ Tileset* getTileset(lua_State* L)
 
     getTiles(L, tileset->getTiles(), tileset);
 
-    getTerrains(L, tileset->getTiles(), tileset->getTerrains());
+    getTerrains(L, tileset->getTerrains());
 
     getProperties(L, tileset->getProperties());
 

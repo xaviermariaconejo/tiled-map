@@ -13,16 +13,15 @@ public:
     Terrain();
     ~Terrain();
 
+    void setTile(int tile);
+    int getTile() const;
+
     void setName(const std::string& name);
     const std::string& getName() const;
 
-    void setTile(Tile* tile);
-    Tile* getTile();
-    const Tile* getTile() const;
-
 private:
+    int p_tile;
     std::string p_name;
-    Tile* p_tile;
 };
 } /* tiled */
 

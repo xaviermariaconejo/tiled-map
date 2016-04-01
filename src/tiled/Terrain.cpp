@@ -4,15 +4,20 @@
 
 using namespace tiled;
 
-Terrain::Terrain():
-p_tile(nullptr)
-{
-
-}
+Terrain::Terrain()
+{}
 
 Terrain::~Terrain()
+{}
+
+void Terrain::setTile(int tile)
 {
-    delete p_tile;
+    p_tile = tile;
+}
+
+int Terrain::getTile() const
+{
+    return p_tile;
 }
 
 void Terrain::setName(const std::string& name)
@@ -23,19 +28,4 @@ void Terrain::setName(const std::string& name)
 const std::string& Terrain::getName() const
 {
     return p_name;
-}
-
-void Terrain::setTile(Tile* tile)
-{
-    p_tile = tile;
-}
-
-Tile* Terrain::getTile()
-{
-    return p_tile;
-}
-
-const Tile* Terrain::getTile() const
-{
-    return p_tile;
 }
