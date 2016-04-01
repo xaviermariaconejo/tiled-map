@@ -40,6 +40,18 @@ Map::~Map()
     }
 }
 
+int Map::findTilesetIndex(int gid) const
+{
+    for (int i = p_tileset.size() - 1; i >= 0; --i)
+    {
+        if (gid >= p_tileset[i]->getGId())
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
 void Map::setVersion(const std::string& version)
 {
     p_version = version;

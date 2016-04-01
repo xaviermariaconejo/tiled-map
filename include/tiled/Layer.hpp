@@ -43,13 +43,12 @@ public:
     const std::string& getName() const;
 
 protected:
+    int p_width, p_height;
     LayerType p_type;
 
 private:
     int p_x,
         p_y,
-        p_width,
-        p_height,
         p_offset_x,
         p_offset_y;
     bool p_visibility;

@@ -23,6 +23,8 @@ public:
     Map();
     ~Map();
 
+    int findTilesetIndex(int gid) const;
+
     void setVersion(const std::string& version);
     const std::string& getVersion() const;
 

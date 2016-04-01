@@ -6,6 +6,7 @@
 
 namespace tiled
 {
+class Map;
 class Tile;
 class TileLayer : public Layer
 {
@@ -29,7 +30,8 @@ public:
     std::vector<int>& getTileMap();
     const std::vector<int>& getTileMap() const;
 
-    void parseData();
+    void parseData(const Map& map);
+
 
 private:
     Encoding p_encoding;
