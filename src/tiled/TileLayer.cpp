@@ -1,6 +1,6 @@
 #include "TileLayer.hpp"
 
-#include <string.h>>
+#include <string.h>
 #include <algorithm>
 
 #ifdef USE_MINIZ
