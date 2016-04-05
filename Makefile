@@ -4,7 +4,7 @@ CFLAGS := -std=c++11 -Wall -fpic -O3
 ODIR   := obj
 LDIR   := lib
 SDIR   := src/tiled
-INC    := -Iinclude/tiled
+INC    := -Iinclude/tiled -Iinclude
 
 SOURCES = $(shell find ./$(SDIR) -name '*.cpp')
 OBJS = $(patsubst $(SDIR)/%,$(ODIR)/%,$(SOURCES:./%.cpp=%.o))
